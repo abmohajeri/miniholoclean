@@ -8,7 +8,6 @@ from .featurizer import Featurizer
 from dataset import AuxTables
 from utils import NULL_REPR, NA_COOCCUR_FV
 
-
 class OccurAttrFeaturizer(Featurizer):
     def specific_setup(self):
         self.name = 'OccurAttrFeaturizer'

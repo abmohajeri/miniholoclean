@@ -11,7 +11,6 @@ from dataset import AuxTables, CellStatus
 from .estimators import NaiveBayes
 from utils import NULL_REPR
 
-
 class DomainEngine:
     def __init__(self, env, dataset, max_sample=5):
         """

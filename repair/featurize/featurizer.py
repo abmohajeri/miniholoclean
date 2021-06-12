@@ -1,7 +1,6 @@
 from abc import ABCMeta, abstractmethod
 from multiprocessing import Pool
 
-
 class Featurizer:
     __metaclass__ = ABCMeta
 

@@ -6,12 +6,10 @@ import Levenshtein
 from dataset import AuxTables
 from .featurizer import Featurizer
 
-
 def gen_feat_tensor(input, classes, total_attrs):
     vid = int(input[0])
     attr_idx = input[1]
     init_value = input[2]
-    # TODO: To add more similarity metrics increase the last dimension of tensor.
     tensor = torch.zeros(1, classes, total_attrs)
     domain = input[3].split('|||')
     for idx, val in enumerate(domain):

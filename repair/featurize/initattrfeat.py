@@ -5,7 +5,6 @@ import torch
 from dataset import AuxTables
 from .featurizer import Featurizer
 
-
 def gen_feat_tensor(input, classes, total_attrs):
     vid = int(input[0])
     attr_idx = input[1]
@@ -13,7 +12,6 @@ def gen_feat_tensor(input, classes, total_attrs):
     tensor = -1 * torch.ones(1, classes, total_attrs)
     tensor[0][init_idx][attr_idx] = 1.0
     return tensor
-
 
 class InitAttrFeaturizer(Featurizer):
 

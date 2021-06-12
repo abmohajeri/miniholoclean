@@ -1,5 +1,5 @@
 import holoclean
-from detect import NullDetector, ViolationDetector
+from detect import NullDetector, ViolationDetector, OutofDomainDetector
 from repair.featurize import *
 
 # 0. Init Files.
@@ -36,12 +36,14 @@ hc = holoclean.HoloClean(
 
 # 2. Load training data and denial constraints.
 hc.load_data('hospital', data)
-hc.load_dcs(constraints)
-hc.ds.set_constraints(hc.get_dcs())
+# hc.load_dcs(constraints)
+# hc.ds.set_constraints(hc.get_dcs())
 
 # 3. Detect erroneous cells using these two detectors.
-detectors = [NullDetector(), ViolationDetector()]
+detectors = [NullDetector(), OutofDomainDetector()]
 hc.detect_errors(detectors)
+
+# , ViolationDetector()
 
 # 4. Repair errors utilizing the defined features.
 hc.setup_domain()
@@ -49,7 +51,7 @@ featurizers = [
     InitAttrFeaturizer(),
     OccurAttrFeaturizer(),
     FreqFeaturizer(),
-    ConstraintFeaturizer(),
+    # ConstraintFeaturizer(),
 ]
 hc.repair_errors(featurizers)
 

@@ -3,7 +3,6 @@ import torch
 from dataset import AuxTables
 from .featurizer import Featurizer
 
-
 class FreqFeaturizer(Featurizer):
     def specific_setup(self):
         self.name = 'FreqFeaturizer'

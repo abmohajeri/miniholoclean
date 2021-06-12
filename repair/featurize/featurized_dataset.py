@@ -41,7 +41,6 @@ class FeaturizedDataset:
             weights_df.insert(1, 'val_idx', np.tile(np.arange(self.tensor.shape[1]), self.tensor.shape[0]))
             weights_df.to_pickle('debug/{}_train_features.pkl'.format(self.ds.id))
 
-        # TODO: remove after we validate it is not needed.
         self.in_features = self.tensor.shape[2]
         logging.debug("generating weak labels...")
         self.weak_labels, self.is_clean = self.generate_weak_labels()

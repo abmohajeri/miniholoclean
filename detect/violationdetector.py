@@ -52,6 +52,7 @@ class ViolationDetector(Detector):
     def to_sql(self, tbl, c):
         # Check tuples in constraint
         unary = len(c.tuple_names)==1
+        # Recognize denial constraints have two tuple or one tuple with constant
         if unary:
             query = self.gen_unary_query(tbl, c)
         else:
