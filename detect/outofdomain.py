@@ -1,7 +1,6 @@
 import pandas as pd
 
 from .detector import Detector
-from utils import NULL_REPR
 
 class OutofDomainDetector(Detector):
     """
@@ -25,7 +24,7 @@ class OutofDomainDetector(Detector):
             _tid_: entity ID
             attribute: attribute with out of domain for this entity
         """
-
+        # Hospital
         domain = {'ProviderNumber': str.isdigit,
                   'PhoneNumber': str.isdigit,
                   'ZipCode': str.isdigit}
