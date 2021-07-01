@@ -1,5 +1,4 @@
 from dataset import Dataset
-from dcparser import Parser
 from domain import DomainEngine
 from detect import DetectEngine
 from repair import RepairEngine
@@ -16,10 +15,8 @@ gensim_logger.setLevel(logging.WARNING)
 class HoloClean:
     def __init__(self, **kwargs):
         arg_defaults = {}
-
         for key in kwargs:
             arg_defaults[key] = kwargs[key]
-
         self.session = Session(arg_defaults)
 
 class Session:
@@ -30,7 +27,6 @@ class Session:
         self.name = name
         self.env = env
         self.ds = Dataset(name, env)
-        self.dc_parser = Parser(env, self.ds)
         self.domain_engine = DomainEngine(env, self.ds)
         self.detect_engine = DetectEngine(env, self.ds)
         self.repair_engine = RepairEngine(env, self.ds)
@@ -44,14 +40,6 @@ class Session:
                                               src_col=src_col)
         logging.info(status)
         logging.debug('Time to load dataset: %.2f secs', load_time)
-
-    def load_dcs(self, fpath):
-        status, load_time = self.dc_parser.load_denial_constraints(fpath)
-        logging.info(status)
-        logging.debug('Time to load dirty data: %.2f secs', load_time)
-
-    def get_dcs(self):
-        return self.dc_parser.get_dcs()
 
     def detect_errors(self, detect_list):
         status, detect_time = self.detect_engine.detect_errors(detect_list)

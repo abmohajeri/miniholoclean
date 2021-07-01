@@ -24,6 +24,7 @@ class OutofDomainDetector(Detector):
             _tid_: entity ID
             attribute: attribute with out of domain for this entity
         """
+
         # Hospital
         domain = {'ProviderNumber': str.isdigit,
                   'PhoneNumber': str.isdigit,
